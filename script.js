@@ -1,7 +1,7 @@
 (() => {
   'use strict';
 
-  const BASE_URL = 'http://127.0.0.1:2200';
+  const BASE_URL = 'https://mental-health-grader.onrender.com';
 
   const form        = document.getElementById('predict-form');
   const submitBtn   = document.getElementById('submit-btn');
