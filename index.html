@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Wellbeing Check</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="grain"></div>
+
+<div class="page">
+
+  <!-- LEFT: hero -->
+  <aside class="hero">
+    <div class="hero__inner">
+      <span class="eyebrow">Student Digital Wellbeing</span>
+      <h1 class="hero__title">How's your<br><em>screen &amp;<br>sleep</em> balance?</h1>
+      <p class="hero__copy">
+        Scrolling, studying, sleeping, moving — they all pull on the same 24 hours.
+        Answer a few honest questions and get a predicted wellbeing score built
+        from patterns across thousands of students.
+      </p>
+
+      <div class="hero__scale" aria-hidden="true">
+        <div class="hero__scale-track">
+          <div class="hero__scale-fill"></div>
+        </div>
+        <div class="hero__scale-labels">
+          <span>Struggling</span>
+          <span>Thriving</span>
+        </div>
+      </div>
+
+      <div class="hero__meta">
+        <div class="meta__item">
+          <span class="meta__num">10</span>
+          <span class="meta__label">quick fields</span>
+        </div>
+        <div class="meta__item">
+          <span class="meta__num">~30s</span>
+          <span class="meta__label">to complete</span>
+        </div>
+        <div class="meta__item">
+          <span class="meta__num">1</span>
+          <span class="meta__label">predicted score</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- RIGHT: form / result -->
+  <main class="panel">
+    <form id="predict-form" class="form" novalidate>
+
+      <section class="field-group" data-group="demographics">
+        <h2 class="field-group__title"><span class="fg-index">01</span> About you</h2>
+        <div class="field-row">
+          <div class="field">
+            <label for="age">Age</label>
+            <input type="number" id="age" name="age" min="10" max="100" placeholder="20" required>
+            <span class="field__error" data-for="age"></span>
+          </div>
+          <div class="field">
+            <label for="gender">Gender</label>
+            <select id="gender" name="gender" required>
+              <option value="" disabled selected>Select</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+            <span class="field__error" data-for="gender"></span>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="country">Country</label>
+            <input type="text" id="country" name="country" placeholder="India" required autocomplete="off">
+            <span class="field__error" data-for="country"></span>
+          </div>
+          <div class="field">
+            <label for="academic_level">Academic level</label>
+            <select id="academic_level" name="academic_level" required>
+              <option value="" disabled selected>Select</option>
+              <option value="High School">High School</option>
+              <option value="Undergraduate">Undergraduate</option>
+              <option value="Graduate">Graduate</option>
+            </select>
+            <span class="field__error" data-for="academic_level"></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="field-group" data-group="digital">
+        <h2 class="field-group__title"><span class="fg-index">02</span> Digital habits</h2>
+        <div class="field-row">
+          <div class="field">
+            <label for="most_used_platform">Most used platform</label>
+            <select id="most_used_platform" name="most_used_platform" required>
+              <option value="" disabled selected>Select</option>
+              <option>Facebook</option>
+              <option>LinkedIn</option>
+              <option>Instagram</option>
+              <option>Snapchat</option>
+              <option>Twitter</option>
+              <option>YouTube</option>
+              <option>TikTok</option>
+              <option>LINE</option>
+              <option>KakaoTalk</option>
+              <option>VKontakte</option>
+              <option>WhatsApp</option>
+              <option>WeChat</option>
+            </select>
+            <span class="field__error" data-for="most_used_platform"></span>
+          </div>
+          <div class="field">
+            <label for="purpose_of_use">Main purpose</label>
+            <select id="purpose_of_use" name="purpose_of_use" required>
+              <option value="" disabled selected>Select</option>
+              <option>Networking</option>
+              <option>Education</option>
+              <option>Entertainment</option>
+              <option>News</option>
+            </select>
+            <span class="field__error" data-for="purpose_of_use"></span>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="avg_daily_usage_hours">Avg. daily usage <span class="unit">hrs</span></label>
+            <input type="number" id="avg_daily_usage_hours" name="avg_daily_usage_hours" min="0" max="24" step="0.1" placeholder="4.5" required>
+            <span class="field__error" data-for="avg_daily_usage_hours"></span>
+          </div>
+          <div class="field">
+            <label for="daily_unlocks">Daily phone unlocks</label>
+            <input type="number" id="daily_unlocks" name="daily_unlocks" min="0" step="1" placeholder="60" required>
+            <span class="field__error" data-for="daily_unlocks"></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="field-group" data-group="lifestyle">
+        <h2 class="field-group__title"><span class="fg-index">03</span> Daily rhythm</h2>
+        <div class="field-row field-row--three">
+          <div class="field">
+            <label for="study_hours">Study <span class="unit">hrs</span></label>
+            <input type="number" id="study_hours" name="study_hours" min="0" max="24" step="0.1" placeholder="3" required>
+            <span class="field__error" data-for="study_hours"></span>
+          </div>
+          <div class="field">
+            <label for="physical_activity_hours">Activity <span class="unit">hrs</span></label>
+            <input type="number" id="physical_activity_hours" name="physical_activity_hours" min="0" max="24" step="0.1" placeholder="1" required>
+            <span class="field__error" data-for="physical_activity_hours"></span>
+          </div>
+          <div class="field">
+            <label for="sleep_hours_per_night">Sleep <span class="unit">hrs</span></label>
+            <input type="number" id="sleep_hours_per_night" name="sleep_hours_per_night" min="0" max="24" step="0.1" placeholder="7" required>
+            <span class="field__error" data-for="sleep_hours_per_night"></span>
+          </div>
+        </div>
+        <div class="field">
+          <label for="stress_level">Stress level</label>
+          <div class="stress-picker" id="stress_level" role="radiogroup" aria-label="Stress level">
+            <button type="button" class="stress-opt" data-value="Low">Low</button>
+            <button type="button" class="stress-opt" data-value="Medium">Medium</button>
+            <button type="button" class="stress-opt" data-value="High">High</button>
+            <button type="button" class="stress-opt" data-value="Very High">Very High</button>
+          </div>
+          <input type="hidden" name="stress_level" id="stress_level_value" required>
+          <span class="field__error" data-for="stress_level"></span>
+        </div>
+      </section>
+
+      <div class="form__footer">
+        <span class="api-status" id="api-status"><i></i>checking API…</span>
+        <button type="submit" class="btn-submit" id="submit-btn">
+          <span class="btn-submit__label">Get my score</span>
+          <span class="btn-submit__spinner" aria-hidden="true"></span>
+        </button>
+      </div>
+
+      <p class="form__error" id="form-error" role="alert"></p>
+    </form>
+
+    <!-- RESULT CARD (hidden until predicted) -->
+    <section class="result" id="result" hidden>
+      <button class="result__close" id="result-close" aria-label="Close result">×</button>
+      <span class="result__eyebrow">Your predicted score</span>
+
+      <div class="dial" id="dial">
+        <svg viewBox="0 0 240 240" class="dial__svg">
+          <circle class="dial__track" cx="120" cy="120" r="104"></circle>
+          <circle class="dial__fill" id="dial-fill" cx="120" cy="120" r="104"></circle>
+        </svg>
+        <div class="dial__center">
+          <span class="dial__value" id="dial-value">0.0</span>
+          <span class="dial__max">/ 10</span>
+        </div>
+      </div>
+
+      <p class="result__tag" id="result-tag">—</p>
+      <p class="result__note">
+        This score reflects patterns from the data you entered — it's a signal,
+        not a diagnosis. If you're struggling, a real conversation with someone
+        you trust matters more than any number.
+      </p>
+      <button type="button" class="btn-secondary" id="result-again">Run another check</button>
+    </section>
+
+  </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
